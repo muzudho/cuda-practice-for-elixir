@@ -8,19 +8,41 @@
 mix new example
 ```
 
-# MSYS2
+# Axon
 
-```plaintext
-Another option is to install the Linux compatiblity tools from [MSYS2](https://www.msys2.org/).
+📝 `mix.exs`:  
 
-After installation start the msys64 bit terminal from the start menu and install the
-C/C++ compiler toolchain. E.g.:
+```elixir
+  # ...
+  defp deps do
+    [
+      # ...
+      {:castore, "~> 1.0"},
+      {:elixir_make, "~> 0.6"},
+      {:nx, "~> 0.5.1"},
+      {:telemetry, "~> 1.0"},
+      {:xla, "~> 0.4.4"},
+      {:exla, "~> 0.5.3"},
+      {:axon, "~> 0.3"},
+      {:table_rex, "~> 3.1"}
+    ]
+  end
+```
 
-  pacman -S --noconfirm pacman-mirrors pkg-config
-  pacman -S --noconfirm --needed base-devel autoconf automake make libtool git \
-    mingw-w64-x86_64-toolchain mingw-w64-x86_64-openssl mingw-w64-x86_64-libtool
+```shell
+# C:\GitHub\cuda-practice-for-elixir>
+cd example
 
-This will give you a compilation suite nearly compatible with Unix' standard tools.
+set XLA_BUILD=true
+
+# もし、掃除したいなら
+mix deps.clean --all
+
+# mix.exs ファイルの deps の設定にしたがって、モジュールを取得
+mix deps.get
+
+# コンパイルおよび実行
+mix run
 ```
 
 # Livebook のインストール
